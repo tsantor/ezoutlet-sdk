@@ -79,14 +79,6 @@ make coverage
 make open_coverage
 ```
 
-## Deploying
-
-```bash
-# Publish to PyPI Test before the live PyPi
-make release_test
-make release
-```
-
 ## Issues
 
 If you experience any issues, please create an [issue](https://github.com/tsantor/ezoutlet-sdk/issues) on Github.
