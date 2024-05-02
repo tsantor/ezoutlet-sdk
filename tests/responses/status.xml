@@ -1,0 +1,11 @@
+<?xml version='1.0'?>
+<request>
+  <site_ip></site_ip>
+  <site_mode>1</site_mode>
+  <site_lost>0</site_lost>
+  <outlet_status>1,1</outlet_status>
+  <outlet_mode>1</outlet_mode>
+  <ping_delay_after_power_on>1</ping_delay_after_power_on>
+  <power_on_delay>3,3</power_on_delay>
+  <no_of_reset>3</no_of_reset>
+</request>

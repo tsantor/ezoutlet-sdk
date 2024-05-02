@@ -1,0 +1,12 @@
+# Testing
+# ------------------------------------------------------------------------------
+pytest==8.2.0  # https://github.com/pytest-dev/pytest
+pytest-mock==3.14.0  # https://github.com/pytest-dev/pytest-mock
+
+requests-mock==1.12.1  # https://github.com/jamielennox/requests-mock
+
+# Code quality
+# ------------------------------------------------------------------------------
+ruff==0.4.2  # https://github.com/astral-sh/ruff
+coverage==7.5.0  # https://github.com/nedbat/coveragepy
+pre-commit==3.7.0  # https://github.com/pre-commit/pre-commit
