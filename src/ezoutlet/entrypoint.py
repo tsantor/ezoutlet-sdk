@@ -27,7 +27,7 @@ def main(ip: str, user: str, password: str, outlet: int, mode: int):
         target_name = TargetConstants.get_display_name(outlet)
         mode_name = ControlConstants.get_display_name(mode)
         logger.info("%s: %s", target_name, mode_name)
-        result = ezoutlet.target_control(outlet, mode)
+        result = ezoutlet.control(outlet, mode)
         logger.debug(result)
 
     except GracefulExit:

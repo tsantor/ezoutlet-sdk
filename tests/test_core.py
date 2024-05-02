@@ -35,7 +35,6 @@ def test_turn_on_outlet(api, requests_mock):
     requests_mock.get(url, text=response_text)
     response = api.turn_on_outlet(TargetConstants.OUTLET1)
     assert response.outlet_status == "1,0"
-    # assert "<outlet_status>1,0</outlet_status>" in response
 
 
 def test_turn_off_outlet(api, requests_mock):
@@ -47,7 +46,17 @@ def test_turn_off_outlet(api, requests_mock):
     requests_mock.get(url, text=response_text)
     response = api.turn_off_outlet(TargetConstants.OUTLET1)
     assert response.outlet_status == "0,0"
-    # assert "<outlet_status>0,0</outlet_status>" in response
+
+
+def test_switch_outlet(api, requests_mock):
+    url = api._build_control_url(TargetConstants.OUTLET1, ControlConstants.SWITCH)  # noqa: SLF001
+
+    response_file = Path("tests/responses/turn_on.xml")
+    response_text = response_file.read_text()
+
+    requests_mock.get(url, text=response_text)
+    response = api.switch_outlet(TargetConstants.OUTLET1)
+    assert response.outlet_status == "1,0"
 
 
 def test_reset_outlet(api, requests_mock):
@@ -59,7 +68,6 @@ def test_reset_outlet(api, requests_mock):
     requests_mock.get(url, text=response_text)
     response = api.reset_outlet(TargetConstants.OUTLET1)
     assert response.outlet_status == "0,0"
-    # assert "<outlet_status>0,0</outlet_status>" in response
 
 
 def test_enable_auto_reset(api, requests_mock):

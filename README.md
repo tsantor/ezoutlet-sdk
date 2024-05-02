@@ -26,9 +26,12 @@ from ezoutlet import EzOutletAPI
 
 ezoutlet = EzOutletAPI("192.168.1.100", "user", "pass")
 
-# Turn oiutlet on/off
+# Turn outlet on/off
 ezoutlet.turn_on_outlet(1)
 ezoutlet.turn_off_outlet(1)
+
+# Switch outlet (i.e. from On → Off, or from Off → On)
+ezoutlet.switch_outlet(1)
 
 # Reset outlet (turn off/on) - only if on
 ezoutlet.reset_outlet(1)

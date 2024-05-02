@@ -38,32 +38,36 @@ class EzOutletAPI:
             f"control={control}"
         )
 
-    def target_control(self, target: int, control: int) -> ControlResponse:
-        """Make request."""
+    def control(self, target: int, control: int) -> ControlResponse:
+        """Make the control request."""
         url = self._build_control_url(target, control)
         response = self.client.get(url)
         response.raise_for_status()
         return ControlResponse(**xml_to_dict(response.text))
 
-    def turn_on_outlet(self, outlet_num: int = 1) -> str:
+    def turn_on_outlet(self, outlet_num: int = 1) -> ControlResponse:
         """Turn on outlet."""
-        return self.target_control(outlet_num, ControlConstants.ON)
+        return self.control(outlet_num, ControlConstants.ON)
 
-    def turn_off_outlet(self, outlet_num: int = 1) -> str:
+    def turn_off_outlet(self, outlet_num: int = 1) -> ControlResponse:
         """Turn off outlet."""
-        return self.target_control(outlet_num, ControlConstants.OFF)
+        return self.control(outlet_num, ControlConstants.OFF)
 
-    def reset_outlet(self, outlet_num: int = 1) -> str:
+    def switch_outlet(self, outlet_num: int = 1) -> ControlResponse:
+        """Switch outlet off/on (only if already on)."""
+        return self.control(outlet_num, ControlConstants.SWITCH)
+
+    def reset_outlet(self, outlet_num: int = 1) -> ControlResponse:
         """Reset outlet."""
-        return self.target_control(outlet_num, ControlConstants.RESET)
+        return self.control(outlet_num, ControlConstants.RESET)
 
-    def enable_auto_reset(self) -> str:
+    def enable_auto_reset(self) -> ControlResponse:
         """Enable auto reset."""
-        return self.target_control(TargetConstants.OUTLET, ControlConstants.ON)
+        return self.control(TargetConstants.OUTLET, ControlConstants.ON)
 
-    def disable_auto_reset(self) -> str:
+    def disable_auto_reset(self) -> ControlResponse:
         """Disable auto reset."""
-        return self.target_control(TargetConstants.OUTLET, ControlConstants.OFF)
+        return self.control(TargetConstants.OUTLET, ControlConstants.OFF)
 
     def _build_status_url(self) -> str:
         """Build status URL."""
